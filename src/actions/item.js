@@ -8,8 +8,9 @@ export function addingFeature(item) {
     };
   }
 
-export function removingFeature() {
+export function removingFeature(item) {
     return {
-        type: REMOVING_FEATURE
+        type: REMOVING_FEATURE,
+        payload: item
     };
 }

@@ -7,7 +7,7 @@ import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
-import {addingFeature} from "./actions/item";
+import {addingFeature, removingFeature} from "./actions/item";
 
 
 
@@ -31,6 +31,7 @@ const App = (props) => {
 
   const removeFeature = item => {
     // dispatch an action here to remove an item
+    props.removingFeature(item)
   };
 
   const buyItem = (event, item) => {
@@ -44,7 +45,7 @@ const App = (props) => {
     <div className="boxes">
       <div className="box">
         <Header car={props.car} />
-        <AddedFeatures car={props.car} addedFeature={removeFeature} />
+        <AddedFeatures car={props.car} removeFeature={removeFeature} />
       </div>
       <div className="box">
         <AdditionalFeatures additionalFeatures={props.additionalFeatures} addItem={buyItem} />
@@ -63,7 +64,8 @@ function mapStateToProps(state) {
 };
 
 const mapDispatchToProps = {
-  addingFeature
+  addingFeature,
+  removingFeature
 };
 
 export default connect(
